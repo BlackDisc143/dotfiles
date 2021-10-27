@@ -69,6 +69,9 @@ let g:indent_guides_auto_colors=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=244
 
+set completeopt=menuone,noinsert
+inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
+
 "vimのhtmlタグの%移動有効可プラグイン
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -178,3 +181,6 @@ function! NumChan(...)
 	end
 endfunction
 
+autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
+autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
+set viewoptions-=options
