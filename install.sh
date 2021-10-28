@@ -20,8 +20,7 @@ for f in .??*; do
   ln -snfv ~/dotfiles/"$f" ~/
 done
 
-ln -sf ~/dotfiles/colors ~/.vim
-ln -sf ~/dotfiles/bundle ~/.vim
+ln -sf ~/dotfiles/.vim ~/.vim
 
 cat << END
 
