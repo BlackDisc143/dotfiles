@@ -10,6 +10,7 @@ git submodule init
 git submodule update
 
 echo "start setup..."
+
 for f in .??*; do
   [ "$f" = ".git" ] && continue
   [ "$f" = ".gitconfig.local.template" ] && continue
@@ -19,6 +20,11 @@ for f in .??*; do
   ln -snfv ~/dotfiles/"$f" ~/
 done
 
+ln -sf ~/dotfiles/colors ~/.vim
+ln -sf ~/dotfiles/bundle ~/.vim
+
 cat << END
+
+dotfiles setup is finish.
 
 END
