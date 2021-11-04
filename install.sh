@@ -20,7 +20,7 @@ for f in .??*; do
   ln -snfv ~/dotfiles/"$f" ~/
 done
 
-ln -sf ~/dotfiles/.vim ~/.vim
+ln -snfv ~/dotfiles/.vim ~/.vim
 
 cat << END
 
