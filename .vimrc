@@ -1,28 +1,39 @@
-
-"Vundleの設定
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-"導入するプラグインの一覧
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'preservim/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'simeji/winresizer'
-Plugin 'ervandew/supertab'
-Plugin 'alvan/vim-closetag'
-Plugin 'reireias/vim-cheatsheet'
-Plugin 'vim-jp/vimdoc-ja'
-Plugin 'skanehira/preview-markdown.vim'
-Plugin 'MichaelMure/mdr'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'thinca/vim-quickrun'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-call vundle#end()
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+"NeoBundle import start
+NeoBundle 'preservim/nerdtree'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'simeji/winresizer'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'alvan/vim-closetag'
+NeoBundle 'reireias/vim-cheatsheet'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'skanehira/preview-markdown.vim'
+NeoBundle 'MichaelMure/mdr'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'thinca/vim-quickrun'
+"plugin import end
+
+call neobundle#end()
+
 filetype plugin indent on
+
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+    \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command."
+endif
+
+NeoBundleCheck
 
 "カラー設定
 set t_Co=256
