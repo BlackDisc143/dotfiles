@@ -7,6 +7,8 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 "NeoBundle import start
 NeoBundle 'preservim/nerdtree'
 NeoBundle 'vim-airline/vim-airline'
