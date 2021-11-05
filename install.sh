@@ -22,6 +22,10 @@ done
 
 ln -snfv ~/dotfiles/.vim ~/.vim
 
+echo "vim plugin setup..."
+
+git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
 cat << END
 
 dotfiles setup is finish.
