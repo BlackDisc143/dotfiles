@@ -1,4 +1,5 @@
 mdr
+neobundle.vim
 nerdtree
 preview-markdown.vim
 supertab
@@ -9,5 +10,6 @@ vim-closetag
 vim-devicons
 vim-indent-guides
 vim-quickrun
+vim-sonictemplate
 vimdoc-ja
 winresizer

@@ -21,6 +21,7 @@ for f in .??*; do
 done
 
 ln -snfv ~/dotfiles/.vim ~/.vim
+ln -snfv ~/dotfiles/.cheatsheat.md ~/.cheatsheat.md
 
 echo "vim plugin setup..."
 

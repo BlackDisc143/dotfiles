@@ -673,6 +673,17 @@ quickrun-synopsis	quickrun.txt	/*quickrun-synopsis*
 quickrun-syntax-option	quickrun.txt	/*quickrun-syntax-option*
 quickrun.txt	quickrun.txt	/*quickrun.txt*
 remove_statusline_func	airline.txt	/*remove_statusline_func*
+sonictemplate-contents	sonictemplate.txt	/*sonictemplate-contents*
+sonictemplate-customize	sonictemplate.txt	/*sonictemplate-customize*
+sonictemplate-install	sonictemplate.txt	/*sonictemplate-install*
+sonictemplate-introduction	sonictemplate.txt	/*sonictemplate-introduction*
+sonictemplate-postfix-completion	sonictemplate.txt	/*sonictemplate-postfix-completion*
+sonictemplate-tutorial	sonictemplate.txt	/*sonictemplate-tutorial*
+sonictemplate-unitesource	sonictemplate.txt	/*sonictemplate-unitesource*
+sonictemplate-writetemplate	sonictemplate.txt	/*sonictemplate-writetemplate*
+sonictemplate.txt	sonictemplate.txt	/*sonictemplate.txt*
+sonictemplate_vim_template_dir	sonictemplate.txt	/*sonictemplate_vim_template_dir*
+sonictemplate_vim_vars	sonictemplate.txt	/*sonictemplate_vim_vars*
 supertab	supertab.txt	/*supertab*
 supertab-closepreviewonpopupclose	supertab.txt	/*supertab-closepreviewonpopupclose*
 supertab-completecase	supertab.txt	/*supertab-completecase*

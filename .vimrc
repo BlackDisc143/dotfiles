@@ -23,6 +23,7 @@ NeoBundle 'skanehira/preview-markdown.vim'
 NeoBundle 'MichaelMure/mdr'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'mattn/vim-sonictemplate'
 "plugin import end
 
 call neobundle#end()
@@ -31,7 +32,7 @@ filetype plugin indent on
 
 if neobundle#exists_not_installed_bundles()
   echomsg 'Not installed bundles : ' .
-    \ string(neobundle#get_not_installed_bundle_names())
+        \ string(neobundle#get_not_installed_bundle_names())
   echomsg 'Please execute ":NeoBundleInstall" command."
 endif
 
@@ -50,7 +51,7 @@ let g:airline#extensions#tabline#whitespace#mixed_indent_algo = 1
 let g:airline_theme = 'wombat'
 
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 let g:airline_symbols.readonly = '読専'
@@ -70,8 +71,10 @@ let g:airline_symbols.branch = ''
 "let g:airline_symbols.readonly = ''
 "let g:airline_symbols.linenr = ''
 
-"チートシートのパス
 let g:cheatsheet#cheat_file = '~/.cheatsheet.md'
+let g:sonictemplate_vim_template_dir = [
+      \ '~/.vim/template'
+      \]
 
 let mapleader=","
 let g:indent_guides_enable_on_vim_startup=0
@@ -142,6 +145,7 @@ nnoremap <silent> <down> gj
 nnoremap <silent> <up> gk
 nnoremap <silent> <C-w> <C-w><C-w>
 inoremap <silent> jj <ESC>
+inoremap <silent> JJ <ESC>
 inoremap <silent> ｊｊ <ESC>
 
 "nnoremap <silent>
@@ -182,16 +186,16 @@ set scrolloff=5
 
 command -nargs=? NumChan call NumChan(<f-args>)
 function! NumChan(...)
-	if a:0 == 0
-		set number
-		set norelativenumber
-	elseif a:1 == 0
-		set number
-		set relativenumber
-	else
-		set nonumber
-		set relativenumber
-	end
+  if a:0 == 0
+    set number
+    set norelativenumber
+  elseif a:1 == 0
+    set number
+    set relativenumber
+  else
+    set nonumber
+    set relativenumber
+  end
 endfunction
 
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
