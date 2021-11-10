@@ -1,3 +1,9 @@
+"=============================
+"まだ整頓されていない.vimrc
+"=============================
+
+
+"NeoBundleの設定とプラグイン導入のところ
 set nocompatible
 filetype off
 
@@ -25,8 +31,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'mattn/vim-sonictemplate'
 NeoBundle 'dense-analysis/ale'
-"plugin import end
-
+"---
 call neobundle#end()
 
 filetype plugin indent on
@@ -39,11 +44,7 @@ endif
 
 NeoBundleCheck
 
-"カラー設定
-set t_Co=256
-"カラースキーム
-colorscheme molokai
-
+"powerlineの設定、よくわからないので触らない
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -72,11 +73,13 @@ let g:airline_symbols.branch = ''
 "let g:airline_symbols.readonly = ''
 "let g:airline_symbols.linenr = ''
 
+"dotfilesで管理してるファイルの読み込みとか
 let g:cheatsheet#cheat_file = '~/.cheatsheet.md'
 let g:sonictemplate_vim_template_dir = [
       \ '~/.vim/template'
       \]
 
+"インデントを可視化するやつの設定
 let mapleader=","
 let g:indent_guides_enable_on_vim_startup=0
 let g:indent_guides_exclude_filetypes=['help','nerdtree']
@@ -101,102 +104,102 @@ let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
+
 " Ctrl + kで次の指摘へ、Ctrl + jで前の指摘へ移動
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 syntax enable
 
-set ruler
+"お気に入りのカラースキーム
+"molokaiは要インストール
+colorscheme molokai
 
-"highlight CursorLine cterm=UNDERLINE ctermfg=NONE ctermbg=black
-"highlight CursorLineNr term=bold cterm=None ctermfg=Red ctermbg=NONE
-"highlight LineNr term=bold cterm=None ctermfg=Green ctermbg=NONE
-"highlight TabLine term=underline cterm=underline ctermfg=red ctermbg=black gui=underline guibg=blue
-"highlight TabLineSel ctermfg=blue ctermbg=yellow
-"highlight TabLineFill term=reverse cterm=reverse gui=reverse
-"highlight Pmenu ctermbg=white ctermfg=black
-"highlight PmenuSel ctermbg=red
-"highlight PmenuSbar ctermbg=blue
-"highlight PmenuThumb ctermbg=green
-
+"vimの表示に関するあれこれ
 set cursorline
 set number
+set showcmd
+set shellslash
+set cmdheight=1
+set showtabline=2
+set t_Co=256
+"* powerlineでこれが使えるからこれ使う理由ない気がするので一時コメントアウト
+"set ruler
 
+"インデント関連
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set softtabstop=2
 set autoindent
+set smartindent
 
+"なんか勝手に作られるファイルを作らないようにするやつ
 set nobackup
 set noswapfile
 
+"ファイル読み込み関連
 set autoread
-set hidden
-
-set showcmd
-
-set backspace=indent,eol,start
-
-set virtualedit=onemore
-
-set showmatch
-set matchtime=1
-
-set history=1000
-
-set wildmenu
-set wildmode=list:longest,full
-
-set smartindent
-
-set shellslash
-
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-nnoremap <silent> <down> gj
-nnoremap <silent> <up> gk
-nnoremap <silent> <C-w> <C-w><C-w>
-inoremap <silent> jj <ESC>
-inoremap <silent> JJ <ESC>
-inoremap <silent> ｊｊ <ESC>
-
-"nnoremap <silent>
-nnoremap <silent><F2> :NERDTreeToggle<CR>
-nnoremap <CR> i<Return><ESC>^k
-
-nnoremap <silent> <Left> :bp<CR> 
-nnoremap <silent> <Right> :bn<CR>
-
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=utf-8
 set fileformats=unix,dos,mac
 
-set clipboard=unnamed
+"バッファ関連
+set hidden
 
-set noerrorbells
-
-set hlsearch
-set incsearch
-
-set ignorecase
-
-set smartcase
-
-set wrapscan
-
-set gdefault
-
+"編集時の挙動関連
+set backspace=indent,eol,start
+set virtualedit=onemore
 set ambiwidth=double
-
-set cmdheight=1
-
-set showtabline=2
-set guioptions-=e
-
 set scrolloff=5
 
+"検索関連
+set showmatch
+set matchtime=1
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set wrapscan
+
+"コマンド関連
+set history=1000
+
+"クリップボード
+set clipboard=unnamed
+
+"ファイル名補完
+set wildmenu
+set wildmode=list:longest,full
+
+"よくわからんのに設定しちゃったやつ & 分類面倒な奴
+set noerrorbells
+set gdefault
+set guioptions-=e
+
+"キーマッピング
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> <down> gj
+nnoremap <silent> <up> gk
+nnoremap <silent> <C-w> <C-w><C-w>
+nnoremap <CR> i<Return><ESC>^k
+nnoremap <silent> <Left> :bp<CR> 
+nnoremap <silent> <Right> :bn<CR>
+
+"jjを崇めよ
+inoremap <silent> jj <ESC>
+inoremap <silent> JJ <ESC>
+inoremap <silent> ｊｊ <ESC>
+
+"プラグイン絡みのキーマッピング
+nnoremap <silent><F2> :NERDTreeToggle<CR>
+
+"===
+"こっから自作関数とかなんかどっかからコピペした奴
+
+"左の行数表示を切り替えるやつ
+"これ将来的にtoggle方式でできるようにする
 command -nargs=? NumChan call NumChan(<f-args>)
 function! NumChan(...)
   if a:0 == 0
@@ -211,6 +214,7 @@ function! NumChan(...)
   end
 endfunction
 
+"なんだっけこれ...
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
 autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
 set viewoptions-=options
