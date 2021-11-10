@@ -31,6 +31,8 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'mattn/vim-sonictemplate'
 NeoBundle 'dense-analysis/ale'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'rhysd/clever-f.vim'
 "---
 call neobundle#end()
 
@@ -44,13 +46,15 @@ endif
 
 NeoBundleCheck
 
-"powerlineの設定、よくわからないので触らない
+"airlineの設定、よくわからないので触らない
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'wombat'
+
+"airlineのカラースキーム
+let g:airline_theme = 'murmur'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -122,7 +126,7 @@ set shellslash
 set cmdheight=1
 set showtabline=2
 set t_Co=256
-"* powerlineでこれが使えるからこれ使う理由ない気がするので一時コメントアウト
+"* airlineでこれが使えるからこれ使う理由ない気がするので一時コメントアウト
 "set ruler
 
 "インデント関連
