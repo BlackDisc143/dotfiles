@@ -1,9 +1,13 @@
 # dotfiles
 若干未完成
 
-# 導入の際にやること
-vimのプラグインがなんか導入できてない時は以下をする
-- ~/.vim/bundle/ をrm -rfする
-- もっかいneobundleを導入する(install.shに記述したのでこれで動かしてみる)
-- 導入後、:NeobundleInstall する
-- これでだめならお手上げ
+# 導入のやりかた
+- git clone https://github.com/BlackDisc143/dotfiles をする
+- cd dotfiles する
+- ./install.sh する
+- vimを開いてNeoBundleInstallする(多分起動時に質問飛んでくるのでそれyesすれば勝手にやってくれる)
+- 終わり
+
+# 更新した点について
+- ちょっとvimrcきれいに整頓した
+- pluginのファイルの残滓がgithubに残ってたのでなんとか処理した
