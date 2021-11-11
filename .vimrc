@@ -33,6 +33,8 @@ NeoBundle 'mattn/vim-sonictemplate'
 NeoBundle 'dense-analysis/ale'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'kuroitu/withcat.vim'
+NeoBundle 'kat0h/nyancat.vim'
 "---
 call neobundle#end()
 
@@ -41,7 +43,7 @@ filetype plugin indent on
 if neobundle#exists_not_installed_bundles()
   echomsg 'Not installed bundles : ' .
         \ string(neobundle#get_not_installed_bundle_names())
-  echomsg 'Please execute ":NeoBundleInstall" command."
+  echomsg 'Please execute ":NeoBundleInstall" command.'
 endif
 
 NeoBundleCheck
