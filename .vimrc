@@ -35,6 +35,7 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'kuroitu/withcat.vim'
 NeoBundle 'kat0h/nyancat.vim'
+NeoBundle 'tpope/vim-fugitive'
 "---
 call neobundle#end()
 
@@ -55,18 +56,33 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#whitespace#mixed_indent_algo = 1
 
+"上のやつのバッファの番号の表記設定
+"let g:airline#extensions#tabline#buffer_idx_format = {
+      "\ '0' : '0 ',
+      "\ '1' : '1 ',
+      "\ '2' : '2 ',
+      "\ '3' : '3 ',
+      "\ '4' : '4 ',
+      "\ '5' : '5 ',
+      "\ '6' : '6 ',
+      "\ '7' : '7 ',
+      "\ '8' : '8 ',
+      "\ '9' : '9 '
+      "\}
+
 "airlineのカラースキーム
-let g:airline_theme = 'murmur'
+let g:airline_theme = 'wombat'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
+"アイコンの設定
 let g:airline_symbols.readonly = '読専'
-let g:airline_symbols.crypt = '🔒'		"暗号化されたファイル
+let g:airline_symbols.crypt = '🔒 暗号化'		"暗号化されたファイル
 let g:airline_symbols.linenr = '行'			"行
 let g:airline_symbols.maxlinenr = '㏑'		"最大行
-let g:airline_symbols.branch = '<'		"gitブランチ
+let g:airline_symbols.branch = '⭠⭠'		"gitブランチ
 let g:airline_symbols.paste = 'ρ'			"ペーストモード
 let g:airline_symbols.spell = 'Ꞩ'			"スペルチェック
 let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
@@ -78,6 +94,31 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 "let g:airline_symbols.readonly = ''
 "let g:airline_symbols.linenr = ''
+
+"モードの表記変更
+let g:airline_mode_map = {
+      \ 'n' : '●Normal',
+      \ 'i' : '# Insert',
+      \ 'R' : '/ Replace',
+      \ 'c' : '? Command',
+      \ 'v' : '◆Visulal',
+      \ 'V' : '= Visulal-Line',
+      \ '' : '■Visual-Block',
+      \}
+
+"下のバーの並び替え
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'b', 'c' ],
+      \ [ 'x', 'y', 'z', 'error', 'worning' ],
+      \ ]
+
+"下のバーの設定
+let g:airline_section_a = airline#section#create(['mode','crypt'])
+let g:airline_section_b = airline#section#create(['branch','hunks'])
+"let g:airline_section_c = airline#section#create(['filename'])
+let g:airline_section_x = airline#section#create(['filetype'])
+let g:airline_section_y = airline#section#create(['fileencoding'])
+"let g:airline_section_z = airline#section#create([''])
 
 "dotfilesで管理してるファイルの読み込みとか
 let g:cheatsheet#cheat_file = '~/.cheatsheet.md'
@@ -111,9 +152,6 @@ let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
 
-" Ctrl + kで次の指摘へ、Ctrl + jで前の指摘へ移動
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 syntax enable
 
 "お気に入りのカラースキーム
@@ -182,6 +220,7 @@ set wildmode=list:longest,full
 set noerrorbells
 set gdefault
 set guioptions-=e
+set ttimeoutlen=50
 
 "キーマッピング
 nnoremap <silent> j gj

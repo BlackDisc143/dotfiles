@@ -96,6 +96,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+alias cdd='cd /mnt/d'
+
 alias vl='vim +NERDTree'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -122,3 +124,4 @@ if ! shopt -oq posix; then
 fi
 
 export EDITOR='/usr/bin/vim'
+
