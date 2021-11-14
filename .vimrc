@@ -53,7 +53,9 @@ NeoBundleCheck
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#whitespace#enabled = 1
 let g:airline#extensions#tabline#whitespace#mixed_indent_algo = 1
 
 "上のやつのバッファの番号の表記設定
