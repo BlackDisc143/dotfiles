@@ -2,7 +2,6 @@
 "まだ整頓されていない.vimrc
 "=============================
 
-
 "NeoBundleの設定とプラグイン導入のところ
 set nocompatible
 filetype off
@@ -135,6 +134,10 @@ let g:indent_guides_auto_colors=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=244
 
+"winresizerの設定
+let g:winresizer_vert_resize = 1  "vsprit時/横方向の変更量"
+let g:winresizer_horiz_resize = 1 "sprit時/縦方向の変更量"
+
 set completeopt=menuone,noinsert
 inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
 
@@ -151,13 +154,13 @@ let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
 
-syntax enable
 
 "お気に入りのカラースキーム
 "molokaiは要インストール
 colorscheme molokai
 
 "vimの表示に関するあれこれ
+syntax enable
 set cursorline
 set number
 set showcmd
