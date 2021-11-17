@@ -84,7 +84,6 @@ let g:airline_symbols.readonly = '読専'
 let g:airline_symbols.crypt = '🔒 暗号化'		"暗号化されたファイル
 let g:airline_symbols.linenr = '行'			"行
 let g:airline_symbols.maxlinenr = '㏑'		"最大行
-let g:airline_symbols.branch = '⭠⭠'		"gitブランチ
 let g:airline_symbols.paste = 'ρ'			"ペーストモード
 let g:airline_symbols.spell = 'Ꞩ'			"スペルチェック
 let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
@@ -116,8 +115,6 @@ let g:airline#extensions#default#layout = [
 
 "下のバーの設定
 let g:airline_section_a = airline#section#create(['mode','crypt'])
-let g:airline_section_b = airline#section#create(['branch','hunks'])
-"let g:airline_section_c = airline#section#create(['filename'])
 let g:airline_section_x = airline#section#create(['filetype'])
 let g:airline_section_y = airline#section#create(['fileencoding'])
 "let g:airline_section_z = airline#section#create([''])
