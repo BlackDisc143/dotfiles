@@ -265,3 +265,6 @@ endfunction
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
 autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
 set viewoptions-=options
+
+"anotherブランチ作成したよ
+"そのテスト

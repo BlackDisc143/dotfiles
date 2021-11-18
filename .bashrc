@@ -125,3 +125,4 @@ fi
 
 export EDITOR='/usr/bin/vim'
 
+#source /home/sak_tak/mintty-colors-solarized/sol.dark
