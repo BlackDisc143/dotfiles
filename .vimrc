@@ -16,9 +16,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 "NeoBundle import start
 NeoBundle 'preservim/nerdtree'
+NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'PhilRunninger/nerdtree-buffer-ops'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'simeji/winresizer'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'alvan/vim-closetag'
@@ -153,6 +154,9 @@ let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
+
+"NERDTreeの設定
+autocmd BufEnter * if tabpagenr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree( ) | quit | endif
 
 
 "お気に入りのカラースキーム
