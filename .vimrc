@@ -156,7 +156,7 @@ highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
 
 "NERDTreeの設定
-autocmd BufEnter * if tabpagenr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree( ) | quit | endif
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') && exists('b:NERDTree') && b:NERDTree.isTabTree( ) | quit | endif
 
 
 "お気に入りのカラースキーム
