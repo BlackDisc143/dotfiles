@@ -267,4 +267,4 @@ autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview
 set viewoptions-=options
 
 "anotherブランチ作成したよ
-"そのテスト
+"そのテスト わざとコンフリクトを起こす
