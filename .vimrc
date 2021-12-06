@@ -30,6 +30,7 @@ NeoBundle 'MichaelMure/mdr'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'mattn/vim-sonictemplate'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'dense-analysis/ale'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'rhysd/clever-f.vim'
@@ -89,9 +90,13 @@ let g:airline_symbols.spell = 'Ꞩ'			"スペルチェック
 let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
 let g:airline_symbols.whitespace = '空'	"空白の警告(余分な空白など)
 let g:airline_left_sep = ''
+"let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
+"let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
+"let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+"let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 "let g:airline_symbols.readonly = ''
 "let g:airline_symbols.linenr = ''
@@ -126,7 +131,6 @@ let g:sonictemplate_vim_template_dir = [
       \]
 
 "インデントを可視化するやつの設定
-let mapleader=","
 let g:indent_guides_enable_on_vim_startup=0
 let g:indent_guides_exclude_filetypes=['help','nerdtree']
 let g:indent_guides_start_level=2
@@ -228,6 +232,9 @@ set gdefault
 set guioptions-=e
 set ttimeoutlen=50
 
+"マップリーダ
+let mapleader=","
+
 "キーマッピング
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -237,6 +244,8 @@ nnoremap <silent> <C-w> <C-w><C-w>
 nnoremap <CR> i<Return><ESC>^k
 nnoremap <silent> <Left> :bp<CR> 
 nnoremap <silent> <Right> :bn<CR>
+
+inoremap ;jj <ESC>A;
 
 "jjを崇めよ
 inoremap <silent> jj <ESC>
