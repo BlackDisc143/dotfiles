@@ -16,9 +16,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 "NeoBundle import start
 NeoBundle 'preservim/nerdtree'
+NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'PhilRunninger/nerdtree-buffer-ops'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'simeji/winresizer'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'alvan/vim-closetag'
@@ -29,6 +30,7 @@ NeoBundle 'MichaelMure/mdr'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'mattn/vim-sonictemplate'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'dense-analysis/ale'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'rhysd/clever-f.vim'
@@ -129,7 +131,6 @@ let g:sonictemplate_vim_template_dir = [
       \]
 
 "インデントを可視化するやつの設定
-let mapleader=","
 let g:indent_guides_enable_on_vim_startup=0
 let g:indent_guides_exclude_filetypes=['help','nerdtree']
 let g:indent_guides_start_level=2
@@ -157,6 +158,9 @@ let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
+
+"NERDTreeの設定
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') && exists('b:NERDTree') && b:NERDTree.isTabTree( ) | quit | endif
 
 
 "お気に入りのカラースキーム
@@ -228,6 +232,9 @@ set gdefault
 set guioptions-=e
 set ttimeoutlen=50
 
+"マップリーダ
+let mapleader=","
+
 "キーマッピング
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -237,6 +244,8 @@ nnoremap <silent> <C-w> <C-w><C-w>
 nnoremap <CR> i<Return><ESC>^k
 nnoremap <silent> <Left> :bp<CR> 
 nnoremap <silent> <Right> :bn<CR>
+
+inoremap ;jj <ESC>A;
 
 "jjを崇めよ
 inoremap <silent> jj <ESC>
