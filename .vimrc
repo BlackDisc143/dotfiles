@@ -53,8 +53,6 @@ NeoBundleCheck
 "airlineの設定、よくわからないので触らない
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#whitespace#enabled = 1
 let g:airline#extensions#tabline#whitespace#mixed_indent_algo = 1
@@ -120,9 +118,24 @@ let g:airline#extensions#default#layout = [
 
 "下のバーの設定
 let g:airline_section_a = airline#section#create(['mode','crypt'])
+let g:airline_section_c = '%t %M'
 let g:airline_section_x = airline#section#create(['filetype'])
-let g:airline_section_y = airline#section#create(['fileencoding'])
-"let g:airline_section_z = airline#section#create([''])
+"let g:airline_section_y = airline#section#create(['fileencoding'])
+"let g:airline_section_z = get(g:, 'airline_linecolumn_prefix','').'%3l:%-2v'
+
+"上のタブラインの表示
+"let g:airline#extensions#tabline#
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+"let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#show_close_button = 0
+
+"diff関連
+let g:airline#extensions#hunks#non_zero_only = 1
 
 "dotfilesで管理してるファイルの読み込みとか
 let g:cheatsheet#cheat_file = '~/.cheatsheet.md'
@@ -245,12 +258,12 @@ nnoremap <CR> i<Return><ESC>^k
 nnoremap <silent> <Left> :bp<CR> 
 nnoremap <silent> <Right> :bn<CR>
 
-inoremap ;jj <ESC>A;
 
 "jjを崇めよ
 inoremap <silent> jj <ESC>
 inoremap <silent> JJ <ESC>
 inoremap <silent> ｊｊ <ESC>
+"inoremap ;jj <ESC>A;
 
 "プラグイン絡みのキーマッピング
 nnoremap <silent><F2> :NERDTreeToggle<CR>
