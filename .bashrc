@@ -96,6 +96,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+alias rr='r.exe'
+
 #よく開くディレクトリのエイリアス
 alias cdd='cd /mnt/d'
 alias show_dotfiles="cd ~/dotfiles"

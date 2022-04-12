@@ -23,6 +23,7 @@ done
 ln -snfv ~/dotfiles/.vim ~/.vim
 ln -snfv ~/dotfiles/.gitconfig ~/.gitcofig
 ln -snfv ~/dotfiles/.cheatsheat.md ~/.cheatsheat.md
+ln -snfv ~/dotfiles/.dircolors ~/.dircolors
 
 echo "vim plugin setup..."
 
