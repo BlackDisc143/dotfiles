@@ -101,6 +101,7 @@ alias rr='r.exe'
 #よく開くディレクトリのエイリアス
 alias cdd='cd /mnt/d'
 alias show_dotfiles="cd ~/dotfiles"
+alias show_sefiles="cd /mnt/d/eclipse-workspace"
 
 alias vl='vim +NERDTree'
 
