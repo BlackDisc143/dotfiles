@@ -21,7 +21,7 @@ NeoBundle 'PhilRunninger/nerdtree-buffer-ops'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'simeji/winresizer'
-NeoBundle 'ervandew/supertab'
+"NeoBundle 'ervandew/supertab'
 NeoBundle 'alvan/vim-closetag'
 NeoBundle 'reireias/vim-cheatsheet'
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -37,6 +37,17 @@ NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'kuroitu/withcat.vim'
 NeoBundle 'kat0h/nyancat.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'vim-denops/denops.vim'
+NeoBundle 'vim-skk/skkeleton'
+NeoBundle 'Shougo/ddc.vim'
+NeoBundle 'Shougo/pum.vim'
+NeoBundle 'Shougo/ddc-around'
+NeoBundle 'LumaKernel/ddc-file'
+NeoBundle 'Shougo/ddc-matcher_head'
+NeoBundle 'Shougo/ddc-sorter_rank'
+NeoBundle 'Shougo/ddc-converter_remove_overlap'
+NeoBundle 'mattn/vim-lsp-settings'
+NeoBundle 'prabirshrestha/vim-lsp'
 "---
 call neobundle#end()
 
@@ -175,6 +186,49 @@ highlight link ALEWarningSign StorageClass
 "NERDTreeの設定
 "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') && exists('b:NERDTree') && b:NERDTree.isTabTree( ) | quit | endif
 
+"こっからコピペ設定
+
+"lspなんたらの設定
+let g:lsp_setting_extra_paths=['/mnt/c/Users/tak_sak']
+
+"skkeletonの設定
+call skkeleton#config({'globalJisyo': '~/.skk/SKK-JISYO.L'})
+imap <C-j> <Plug>(skkeleton-enable)
+cmap <C-j> <Plug>(skkeleton-enable)
+
+"ddcの設定
+call ddc#custom#patch_global('completionMenu', 'pum.vim')
+call ddc#custom#patch_global('sources', [
+ \ 'around',
+ \ 'vim-lsp',
+ \ 'file'
+ \ ])
+call ddc#custom#patch_global('sourceOptions', {
+ \ '_': {
+ \   'matchers': ['matcher_head'],
+ \   'sorters': ['sorter_rank'],
+ \   'converters': ['converter_remove_overlap'],
+ \ },
+ \ 'skkeleton':{
+ \   'mark': 'skkeleton',
+ \   'matchers': ['skkeleton'],
+ \   'sorters': [],
+ \   'minAutoCompleteLength': 2,
+ \ },
+ \ 'around': {'mark': 'Around'},
+ \ 'vim-lsp': {
+ \   'mark': 'LSP', 
+ \   'matchers': ['matcher_head'],
+ \   'forceCompletionPattern': '\.|:|->|"\w+/*'
+ \ },
+ \ 'file': {
+ \   'mark': 'file',
+ \   'isVolatile': v:true, 
+ \   'forceCompletionPattern': '\S/\S*'
+ \ }})
+call ddc#enable()
+inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 
 "お気に入りのカラースキーム
 "molokaiは要インストール
