@@ -15,39 +15,40 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 "NeoBundle import start
-NeoBundle 'preservim/nerdtree'
-NeoBundle 'ryanoasis/vim-devicons'
-NeoBundle 'PhilRunninger/nerdtree-buffer-ops'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'simeji/winresizer'
-"NeoBundle 'ervandew/supertab'
 NeoBundle 'alvan/vim-closetag'
-NeoBundle 'reireias/vim-cheatsheet'
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'skanehira/preview-markdown.vim'
-NeoBundle 'MichaelMure/mdr'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'mattn/vim-sonictemplate'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'dense-analysis/ale'
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'rhysd/clever-f.vim'
+"NeoBundle 'ervandew/supertab'
 NeoBundle 'kuroitu/withcat.vim'
 NeoBundle 'kat0h/nyancat.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'vim-denops/denops.vim'
-NeoBundle 'vim-skk/skkeleton'
+NeoBundle 'LumaKernel/ddc-file'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/vim-lsp-settings'
+NeoBundle 'mattn/vim-sonictemplate'
+NeoBundle 'MichaelMure/mdr'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'PhilRunninger/nerdtree-buffer-ops'
+NeoBundle 'prabirshrestha/vim-lsp'
+NeoBundle 'preservim/nerdtree'
+NeoBundle 'reireias/vim-cheatsheet'
+NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'Shougo/ddc.vim'
+NeoBundle 'shun/ddc-vim-lsp'
 NeoBundle 'Shougo/pum.vim'
 NeoBundle 'Shougo/ddc-around'
-NeoBundle 'LumaKernel/ddc-file'
 NeoBundle 'Shougo/ddc-matcher_head'
 NeoBundle 'Shougo/ddc-sorter_rank'
 NeoBundle 'Shougo/ddc-converter_remove_overlap'
-NeoBundle 'mattn/vim-lsp-settings'
-NeoBundle 'prabirshrestha/vim-lsp'
+NeoBundle 'simeji/winresizer'
+NeoBundle 'skanehira/preview-markdown.vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'vim-denops/denops.vim'
+NeoBundle 'vim-skk/skkeleton'
+NeoBundle 'vim-jp/vimdoc-ja'
 "---
 call neobundle#end()
 
@@ -129,7 +130,8 @@ let g:airline#extensions#default#layout = [
 
 "下のバーの設定
 let g:airline_section_a = airline#section#create(['mode','crypt'])
-let g:airline_section_c = '%t %M'
+"let g:airline_section_c = '%t %M'
+let g:airline_section_c = ''
 let g:airline_section_x = airline#section#create(['filetype'])
 "let g:airline_section_y = airline#section#create(['fileencoding'])
 "let g:airline_section_z = get(g:, 'airline_linecolumn_prefix','').'%3l:%-2v'
@@ -186,22 +188,31 @@ highlight link ALEWarningSign StorageClass
 "NERDTreeの設定
 "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') && exists('b:NERDTree') && b:NERDTree.isTabTree( ) | quit | endif
 
-"こっからコピペ設定
-
 "lspなんたらの設定
 let g:lsp_setting_extra_paths=['/mnt/c/Users/tak_sak']
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_sings_enabled = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_virtual_text_enabled = 1
+let g:lsp_diagnostics_signs_error = {'text': ''}
+let g:lsp_diagnostics_signs_warning = {'text': ''}
+let g:lsp_diagnostics_sings_hint = {'text': '?'}
+let g:lsp_diagnostics_sings_infomation = {'text': 'i'}
 
 "skkeletonの設定
 call skkeleton#config({'globalJisyo': '~/.skk/SKK-JISYO.L'})
-imap <C-j> <Plug>(skkeleton-enable)
-cmap <C-j> <Plug>(skkeleton-enable)
+"下のはなんか重くなるから使うなよ
+"call skkeleton#config({'userSkkServer': v:true})
 
 "ddcの設定
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
 call ddc#custom#patch_global('sources', [
  \ 'around',
  \ 'vim-lsp',
- \ 'file'
+ \ 'file',
+ \ 'skkeleton'
  \ ])
 call ddc#custom#patch_global('sourceOptions', {
  \ '_': {
@@ -227,8 +238,7 @@ call ddc#custom#patch_global('sourceOptions', {
  \   'forceCompletionPattern': '\S/\S*'
  \ }})
 call ddc#enable()
-inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
-inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+
 
 "お気に入りのカラースキーム
 "molokaiは要インストール
@@ -321,6 +331,10 @@ inoremap <silent> ｊｊ <ESC>
 
 "プラグイン絡みのキーマッピング
 nnoremap <silent><F2> :NERDTreeToggle<CR>
+inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+imap <C-j> <Plug>(skkeleton-enable)
+cmap <C-j> <Plug>(skkeleton-enable)
 
 "===
 "こっから自作関数とかなんかどっかからコピペした奴

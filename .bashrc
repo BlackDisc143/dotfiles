@@ -100,13 +100,13 @@ alias rr='r.exe'
 
 #よく開くディレクトリのエイリアス
 alias cdd='cd /mnt/d'
+alias sogo='cd /mnt/d/総合/'
 alias show_dotfiles="cd ~/dotfiles"
 
 alias vl='vim +NERDTree'
 
 #git用エイリアス
 alias status="git status"
-
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -134,4 +134,13 @@ fi
 
 export EDITOR='/usr/bin/vim'
 
+export DENO_INSTALL="/home/sak_tak/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 #source /home/sak_tak/mintty-colors-solarized/sol.dark
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+echo "良い子のお約束! 脳死でrm -rfするなよ！"
