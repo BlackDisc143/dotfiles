@@ -40,6 +40,7 @@ NeoBundle 'Shougo/ddc-matcher_head'
 NeoBundle 'Shougo/ddc-sorter_rank'
 NeoBundle 'Shougo/ddc-converter_remove_overlap'
 NeoBundle 'simeji/winresizer'
+NeoBundle 'skanehira/denops-twihi.vim'
 NeoBundle 'skanehira/preview-markdown.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Townk/vim-autoclose'
@@ -317,7 +318,8 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> <down> gj
 nnoremap <silent> <up> gk
-nnoremap <silent> <C-w> <C-w><C-w>
+"C-w で一回で切り替えは便利だけど色々機能を犠牲にしてた
+"nnoremap <silent> <C-w> <C-w><C-w>
 nnoremap <CR> i<Return><ESC>^k
 nnoremap <silent> <Left> :bp<CR> 
 nnoremap <silent> <Right> :bn<CR>
@@ -338,6 +340,20 @@ cmap <C-j> <Plug>(skkeleton-enable)
 
 "===
 "こっから自作関数とかなんかどっかからコピペした奴
+
+"VSCodeみたいに下にterminalを表示する感じのやつ
+command -nargs=? LikeVS call LikeVS(<f-args>)
+function! LikeVS(...)
+  call feedkeys(":bo terminal\<CR>","n")
+  for i in range(0,2)
+    call feedkeys("\<C-w>","n")
+  endfor
+  if a:0 < 1
+    silent call feedkeys(":res +10\<CR>","n")
+  else
+    silent call feedkeys(":res +".a:1."\<CR>","n")
+  endif
+endfunction
 
 "左の行数表示を切り替えるやつ
 "これ将来的にtoggle方式でできるようにする

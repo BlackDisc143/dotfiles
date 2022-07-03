@@ -1,6 +1,8 @@
 # dotfiles
 若干未完成
 
+こんなにごちゃごちゃした.vimrcにしてどうすんのよ。
+
 # 導入のやりかた
 - git clone https://github.com/BlackDisc143/dotfiles をする
 - cd dotfiles する
