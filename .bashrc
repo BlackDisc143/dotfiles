@@ -56,21 +56,41 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+# source /usr/share/bash-completion/completions/git
+ 
+
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+#RESET=$(tput sgr0)
+#BLUE=$(tput setaf 4)
+#GREY=$(tput setaf 244)
+RED=$(tput setaf 1)
+#YELLOW=$(tput setaf 3)
+
+git_prompt() {
+  BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
+
+  if [ ! -z $BRANCH ]; then
+    echo -n "$BRANCH"
+
+    if [ ! -z "$(git status --short)" ]; then
+      echo " ✗"
+    fi
+  fi
+}
+ 
+if [ -f /etc/bash_completion.d/git-prompt ]; then
+  export PS1='\n\[\e[7;40m\] $(git_prompt) \[\e[0;45m\]\[\e[1;45m\]\[\e[1;45;37m\]  \T  \[\e[0;35;44m\] \[\e[1;44;37m\]  \w \[\e[0;34;40m\]\[\e[0;37;40m\]\n\[\e[1;40;37m\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\[\033[00m\]\$ '
+  else
+    export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+
+GIT_PS1_SHOWDIRTYSTATE=false
+GIT_PS1_SHOWUNTRACKEDFILES=false
+GIT_PS1_SHOWSTASHSTATE=false
+GIT_PS1_SHOWUPSTREAM=auto
+
+source /mnt/d/git_anythings/zatu-git-complete.bash
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

@@ -342,6 +342,7 @@ cmap <C-j> <Plug>(skkeleton-enable)
 "こっから自作関数とかなんかどっかからコピペした奴
 
 "VSCodeみたいに下にterminalを表示する感じのやつ
+":bo terminal LL rows=10 みたいにやればそもそもこの関数いらねえわ
 command -nargs=? LikeVS call LikeVS(<f-args>)
 function! LikeVS(...)
   call feedkeys(":bo terminal\<CR>","n")
